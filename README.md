@@ -56,17 +56,17 @@ Gambar 1. Jumlah Variasi Per Kelas Dari Kolom Class
 Karena data seimbang maka jangan menghapus duplikasi data karena dapat menyebabkan ketidakseimbangan kumpulan data.
 Setiap class (iris-sentosa, versicolor, virginica) memiliki jumlah 50 data.
 
-### EDA - Univariate Analysis
+### EDA - Bivariate Analysis
 
-![Analisis Univariat (Sepal)](https://github.com/isa96/MLP/blob/main/assets/4.PNG "Analisis Univariat (Sepal)")
+![Analisis Bivariat (Sepal)](https://github.com/isa96/MLP/blob/main/assets/4.PNG "Analisis Bivariat (Sepal)")
 
 Gambar 2a. Analisis Univariat (Data Sepal) 
 
-![Analisis Univariat (Petal)](https://github.com/isa96/MLP/blob/main/assets/5.PNG "Analisis Univariat (Petal)")
+![Analisis Bivariat (Petal)](https://github.com/isa96/MLP/blob/main/assets/5.PNG "Analisis Bivariat (Petal)")
 
-Gambar 2b. Analisis Univariat (Data Petal)
+Gambar 2b. Analisis Bivariat (Data Petal)
 
-Berdasarkan Gambar 2a dan 2b, informasi yang dapat diketahui yaitu:
+Di Gambar 2a dan 2b, informasi yang dapat diketahui yaitu:
   - Class Iris Setosa memiliki panjang sepal yang lebih kecil tetapi ukuran lebar sepal sangat tinggi.
   - Class Iris Versicolor terletak di tengah untuk panjang dan lebar.
   - Class Iris Virginica memiliki panjang sepal yang lebih besar dan lebar sepal yang lebih kecil.
@@ -86,7 +86,7 @@ Gambar 3a. Analisis Multivariat
 
 Gambar 3b. Analisis Matriks Korelasi
 
-Berdasarkan Gambar 3a dan 3b, informasi yang dapat diketahui yaitu:
+Pada Gambar 3a dan 3b, informasi yang dapat diketahui yaitu:
   - Class Iris Setosa memiliki panjang dan lebar kelopak(petal) yang rendah.
   - Class Iris Versicolor memiliki panjang dan lebar kelopak(petal) rata-rata.
   - Class Iris Virginica memiliki panjang dan lebar kelopak(petal) yang tinggi.
@@ -96,7 +96,16 @@ Berdasarkan Gambar 3a dan 3b, informasi yang dapat diketahui yaitu:
   - Korelasi tinggi antara kolom panjang dan lebar kelopak(petal)
   - Panjang Sepal dan Lebar Sepal sedikit berkorelasi satu sama lain
 
-## Data Preparation
+### Splitting
 
-Pada proyek ini digunakan _Train Test Split_ pada library  *sklearn.model_selection* untuk membagi dataset menjadi data latih dan data uji dengan pembagian sebesar 80:20. Semua proses ini diperlukan dalam rangka membuat model yang baik.
-Dikarenakan data tidak terdapat nilai null maka tidak dilakukan cleansing. Lalu, data juga tidak dilakukan feature-extraction dan feature engineering. Berdasarkan hasil eksplorasi data, ditemukan korelasi tinggi antar feature yang mana diasumsikan sudah cukup untuk melakukan modeling dan berpeluang mendapat evaluasi model yang baik.
+Pada projek ini digunakan _Train Test Split_ pada library  *sklearn.model_selection* untuk membagi dataset menjadi data latih dan data uji dengan pembagian sebesar 80:20. Semua proses ini diperlukan dalam rangka membuat model yang baik.
+
+### Cleaning
+Dikarenakan data tidak terdapat nilai null dan data duplikat tidak banyak maka tidak dilakukan cleansing. 
+
+### Feature Engineering
+Berdasarkan gambar 3b, terlihat bahwa terdapat korelasi tinggi antara kolom panjang dan lebar kelopak(petal). Oleh karena itu, dari _insight_ tersebut bisa dijadikan masukan untuk membuat sebuah fitur baru. Salah satunya adalah dengan menghitung ratio antara kolom panjang dan lebar kelopak(petal), yang harapannya dapat memberi _impact_ pada hasil evaluasi model.
+
+### Feature Extraction
+
+Diketahui bahwa pada gambar 3a, terdapat beberapa kolom yang memiliki distribusi yang tidak linear. Maka dari perlu sebuah teknik yang dapat memberi standar pada fitur yang memiliki distribusi yang tidak linear. Salah satu teknik yang dapat digunakan adalah _StandardScaler_ dimana teknik ini digunakan untuk menstandarkan fitur dengan menghilangkan rata-rata dan menskalakan ke varians unit. _StandardScaler_ memastikan bahwa setiap fitur memiliki mean 0 dan standar deviasi 1. Ini penting untuk algoritma machine learning yang sensitif terhadap skala data. Lalu manfaat lain adalah menghindari dominasi fitur. Fitur dengan skala yang lebih besar bisa mendominasi model dan menyebabkan model menjadi bias terhadap fitur tersebut. Dengan menstandarkan fitur, maka dapat dipastikan bahwa semua fitur berkontribusi secara setara dalam proses training model.
