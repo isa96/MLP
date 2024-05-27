@@ -60,7 +60,7 @@ Setiap class (iris-sentosa, versicolor, virginica) memiliki jumlah 50 data.
 
 ![Analisis Bivariat (Sepal)](https://github.com/isa96/MLP/blob/main/assets/4.PNG "Analisis Bivariat (Sepal)")
 
-Gambar 2a. Analisis Univariat (Data Sepal) 
+Gambar 2a. Analisis Bivariat (Data Sepal) 
 
 ![Analisis Bivariat (Petal)](https://github.com/isa96/MLP/blob/main/assets/5.PNG "Analisis Bivariat (Petal)")
 
