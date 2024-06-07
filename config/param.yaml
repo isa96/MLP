@@ -1,0 +1,10 @@
+model_versions: "v1.0.0"
+choosen_method: "Logistic Regression"
+methods:
+  - name: "Logistic Regression"
+    config:
+      max_iter: 1000
+  - name: "SVM"
+    config:
+      C: 1.0
+      kernel: "rbf"
